@@ -24,7 +24,7 @@
               <span>{{ coin.lastPrice }}</span>
             </div>
             <div class="col-md col-lg">
-              <span>AVG Price: </span>
+              <span>Avg Price: </span>
               <span>{{ coin.weightedAvgPrice }}</span>
             </div>
             <div class="col-md-none col-lg-auto">
@@ -45,6 +45,7 @@
 
 <script>
 import { mapState } from 'vuex'
+
 export default {
   name: 'SearchExistItem',
   props: {
@@ -54,7 +55,7 @@ export default {
   },
   data() {
     return {
-      inputNumberValue: this.coin.quantity ?? 1
+      inputNumberValue: this.coin.quantity
     }
   },
   watch: {
