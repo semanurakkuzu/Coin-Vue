@@ -4,7 +4,9 @@
       <div class="rounded-2 bg-container box-shadow">
         <div class="row mx-3 pt-3 align-items-center">
           <div class="col-md-12 col-lg p-0 mb-3">
-            <div><img src="@/img/coin_logo.png" class="logo-size" /></div>
+            <div>
+              <img src="@/img/coin_logo.png" class="logo-size" />
+            </div>
           </div>
           <div class="col-md-12 col-lg-auto p-0 mb-3">
             <button
@@ -18,11 +20,11 @@
               Refresh
             </button>
           </div>
-          <div v-if="myPortfolio == 0" class="alert alert-warning" role="alert">
+          <div v-if="myPortfolio.length === 0" class="alert alert-warning" role="alert">
             <h4 class="alert-heading">My Portfolio</h4>
             <p>
-              You don't have any coin in your portfolio. You can click the
-              add button to list and add symbols.
+              You don't have any coin in your portfolio. You can click the add
+              button to list and add symbols.
             </p>
           </div>
         </div>
@@ -51,12 +53,10 @@ import { mapActions, mapState } from 'vuex'
 import PieChart from './PieChart.vue'
 import PortfolioItem from './PortfolioItem.vue'
 import SearchModal from './SearchModal.vue'
+
 export default {
   components: { PieChart, PortfolioItem, SearchModal },
   name: 'HomePage',
-  data() {
-    return {}
-  },
   created() {
     let registeredData = JSON.parse(localStorage.getItem('registeredData'))
 
@@ -66,7 +66,7 @@ export default {
 
     setInterval(() => {
       this.fetchAllCoin()
-    }, 1000 * 60 * 20) // 20 min
+    }, 1000 * 60 * 20) // every 20 min.
   },
   computed: {
     ...mapState(['coinList', 'myPortfolio']),
@@ -75,23 +75,17 @@ export default {
         return []
       }
 
-      let temp = this.myPortfolio.map((myPortfolioCoin) => {
-        let coin = this.coinList.find(
+      return this.myPortfolio.map((myPortfolioCoin) => {
+        let { lastPrice, weightedAvgPrice } = this.coinList.find(
           (coinListCoin) => coinListCoin.symbol === myPortfolioCoin.symbol
         )
 
-        if (!coin) {
-          return false
-        }
-
         return {
           ...myPortfolioCoin,
-          lastPrice: coin.lastPrice,
-          weightedAvgPrice: coin.weightedAvgPrice
+          lastPrice,
+          weightedAvgPrice
         }
       })
-
-      return temp
     }
   },
   methods: {
@@ -111,7 +105,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .bg-color {
   background: rgb(91, 15, 97);
   background: radial-gradient(
