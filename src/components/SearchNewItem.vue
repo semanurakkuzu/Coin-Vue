@@ -51,7 +51,10 @@ export default {
   },
   methods: {
     addItem() {
-      this.$emit('add-item', this.coin.symbol, this.inputNumberValue)
+      this.$emit('add-item', {
+        coinSymbol: this.coin.symbol,
+        inputNumberValue: this.inputNumberValue
+      })
     }
   }
 }

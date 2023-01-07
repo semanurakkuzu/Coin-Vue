@@ -27,7 +27,7 @@
               v-model="inputValue"
               @keyup="filterCoin"
             />
-            <p class="small text-white mt-2"> Minimum 3 characters</p>
+            <p class="small text-white mt-2">Minimum 3 characters</p>
           </div>
           <div class="mx-2" v-for="coin in filteredCoins" :key="coin.symbol">
             <search-exist-item
@@ -52,6 +52,7 @@
 import { mapActions, mapState } from 'vuex'
 import SearchExistItem from './SearchExistItem.vue'
 import SearchNewItem from './SearchNewItem.vue'
+
 export default {
   components: { SearchExistItem, SearchNewItem },
   name: 'SearchModal',
@@ -76,6 +77,8 @@ export default {
         this.filteredCoins = this.coinList.filter((coin) =>
           coin.symbol.includes(this.inputValue.toUpperCase())
         )
+      } else {
+        this.filteredCoins = []
       }
     },
     isCoinExistInMyPortfolio(coin) {
@@ -83,7 +86,7 @@ export default {
         this.myPortfolio.filter((item) => item.symbol == coin.symbol).length > 0
       )
     },
-    addItem(coinSymbol, inputNumberValue) {
+    addItem({ coinSymbol, inputNumberValue }) {
       this.addMyPortfolio({ coinSymbol, inputNumberValue })
     },
     removeItem(coinSymbol) {
