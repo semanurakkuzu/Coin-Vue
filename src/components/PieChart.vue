@@ -1,12 +1,12 @@
 <template>
-  <GChart :type="type" :data="chartData" :options="options" />
+  <g-chart :type="type" :data="chartData" :options="options" />
 </template>
 
 <script>
 import { GChart } from 'vue-google-charts/legacy'
 import { mapState } from 'vuex'
 export default {
-  name: 'pieChart',
+  name: 'PieChart',
   components: {
     GChart
   },
@@ -41,8 +41,11 @@ export default {
       let mapChart = this.myPortfolio.map(({ symbol, quantity }) => {
         return [symbol, Number(quantity)]
       })
-      mapChart.splice(0, 0, ['Task', 'Coin'])
-      return mapChart
+
+      return [
+        ['Task', 'Coin'],
+        ...mapChart
+      ]
     }
   }
 }
