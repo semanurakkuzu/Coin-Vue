@@ -1,0 +1,44 @@
+.btn {
+  border-color: transparent !important;
+  color: white !important;
+  font-size: 14px;
+}
+
+.btn:focus-visible {
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.btn:hover {
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+}
+
+.btn-danger {
+  background: #8b37c4 !important;
+}
+
+.btn-warning {
+  background: #ac38b4 !important;
+}
+
+.btn-primary {
+  background: #5b0f61 !important;
+}
+
+.card {
+  margin-bottom: 15px;
+  color: white !important;
+  border-radius: 3px !important;
+  background: rgba(0, 0, 0, 0.1) !important;
+}
+
+.form-control:focus {
+  border-color: #5b0f61 !important;
+  box-shadow: 0 0 0 0.05rem #5b0f61 !important;
+}
+
+.alert-warning{
+  background: #8b37c4 !important;
+  color: #e3bce6;
+  border-color: transparent !important;
+}
