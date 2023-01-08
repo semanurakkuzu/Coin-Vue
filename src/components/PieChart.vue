@@ -14,7 +14,7 @@ export default {
     return {
       type: 'PieChart',
       options: {
-        width: 800,
+        maxwidth: 800,
         height: 600,
         colors: [
           '#af7af5',
@@ -31,7 +31,7 @@ export default {
           textStyle: { color: 'white', fontSize: 12 }
         },
         pieSliceBorderColor: 'transparent',
-        chartArea: { right: 0, width: '80%', height: '80%' }
+        
       }
     }
   },
@@ -47,6 +47,7 @@ export default {
         ...mapChart
       ]
     }
-  }
+  },
+ 
 }
 </script>
