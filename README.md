@@ -1,4 +1,5 @@
 # coin-vue
+
 The purpose of this project is to create a portfolio page with symbols and price information found in the api. Portfolio list created at the same time
  to show in a pie chart.
  
